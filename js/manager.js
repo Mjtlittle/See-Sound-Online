@@ -2,22 +2,19 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let active_visual = null;
 let analyzer = null;
-
-
+let analyzer_data;
 
 const streamAnalysis = function(stream) {
 
     const context = new (window.AudioContext || window.webkitAudioContext)();
-    const source = context.createMediaStreamSource(stream);
     const processor = context.createScriptProcessor(1024, 1, 1);
     
     analyzer = context.createAnalyser();
-    source.connect(analyzer);
     analyzer.connect(context.destination);
 
-    var dataArray = new Float32Array(analyzer.frequencyBinCount);
+    analyzer_data = new Float32Array(analyzer.frequencyBinCount);
 
-    analyzer.getFloatFrequencyData(dataArray);
+    analyzer.getFloatFrequencyData(analyzer_data);
 }
 
 
