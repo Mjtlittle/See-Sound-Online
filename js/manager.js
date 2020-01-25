@@ -5,6 +5,24 @@ let analyzer = null;
 
 
 
+const streamAnalysis = function(stream) {
+
+    const context = new (window.AudioContext || window.webkitAudioContext)();
+    const source = context.createMediaStreamSource(stream);
+    const processor = context.createScriptProcessor(1024, 1, 1);
+    
+    analyzer = context.createAnalyser();
+    source.connect(analyzer);
+    analyzer.connect(context.destination);
+
+    var dataArray = new Float32Array(analyzer.frequencyBinCount);
+
+    analyzer.getFloatFrequencyData(dataArray);
+}
+
+
+navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(streamAnalysis);
+
 
 
 // auto resize canvas when then window changes size
