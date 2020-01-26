@@ -13,7 +13,7 @@ const streamAnalysis = function(stream) {
     analyzer.fftSize = 1024;
     source.connect(analyzer);
 
-    analyzer_data = new Float32Array(analyzer.fftSize);
+    analyzer_data = new Float32Array(analyzer.frequencyBinCount);
     analyzer.getFloatFrequencyData(analyzer_data);
     
     
