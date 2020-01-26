@@ -37,11 +37,16 @@ class DynamicWaveLayer {
 
         //Amplitude taken from highest value
         let amplitude = 0.0;
-        amplitude = Math.max(analyzer_data) / 50.0;
+        let i = 0;
+        for (i=0; i<analyzer_data.length; i++) {
+            if (analyzer_data[i] > amplitude) {
+                amplitude = analyzer_data[i];
+            }
+        }
+        amplitude = amplitude / 50.0;
         console.log(amplitude);
         //Wavelength taken from average value
         let wavelength = 0.0;
-        let i = 0;
         for (i=0; i<analyzer_data.length; i++) {
             wavelength += analyzer_data[i];
         }
