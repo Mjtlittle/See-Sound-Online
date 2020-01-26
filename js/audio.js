@@ -10,7 +10,7 @@ const streamAnalysis = function(stream) {
     analyzer = context.createAnalyser();
     analyzer.minDecibels = -100;
     analyzer.maxDecibels = 0;
-    analyzer.fftSize = 64;
+    analyzer.fftSize = 1024;
     source.connect(analyzer);
 
     analyzer_data = new Float32Array(analyzer.frequencyBinCount);
