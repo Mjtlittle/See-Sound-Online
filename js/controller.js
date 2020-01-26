@@ -22,15 +22,7 @@ function update_canvas_size() {
     call_visual_setup();
 }
 
-document.getElementById('submit').addEventListener('click', (event) => {
-    var filename = document.getElementById('input').files[0].name;
-    document.write("<audio src=\"music/ducktales.mp3\" type=\"audio/mpeg\"></audio>")
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    var context = new AudioContext();
-    const audioElement = document.querySelector('audio');
-    const track = context.createMediaElementSource(audioElement);
-    track.connect(context.destination);
-});
+
 
 // change the visual on click
 canvas.addEventListener('click', (event) => {
@@ -67,6 +59,7 @@ function call_visual_setup(){
 
 // run the visualizer
 function run() {
+    console.log("run");
     update_canvas_size();
     call_visual_setup();
     window.requestAnimationFrame(__update_loop);
@@ -74,6 +67,7 @@ function run() {
 
 let prev_t;
 function __update_loop(t) {
+    console.log("update loop");
     window.requestAnimationFrame(__update_loop);
 
     if (analyzer != null)
@@ -87,4 +81,4 @@ function __update_loop(t) {
     this.prev_t = t;
 }
 
-run();
+

@@ -17,9 +17,53 @@ const streamAnalysis = function(stream) {
 
     analyzer_data = new Float32Array(analyzer.frequencyBinCount);
     analyzer.getFloatFrequencyData(analyzer_data);
+
+    run();
     
 }
 
+
+document.getElementById('submit').addEventListener('click', (event) => {
+    
+    var filename = document.getElementById('input').files[0].name;
+    var element = document.createElement("audio");
+    element.src = 'music/'+filename;
+    element.type = 'audio/mpeg';
+    document.body.append(element);
+    
+    disableFileInput();
+
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    
+    var context = new AudioContext();
+    const audioElement = document.querySelector('audio');
+    const track = context.createMediaElementSource(audioElement);
+
+    analyzer = context.createAnalyser();
+    analyzer.minDecibels = -100;
+    analyzer.maxDecibels = 0;
+    analyzer.fftSize = 1024;
+
+    track.connect(analyzer);
+
+    analyzer_data = new Float32Array(analyzer.frequencyBinCount);
+    analyzer.getFloatFrequencyData(analyzer_data);
+
+    analyzer.connect(context.destination);
+
+    console.log('complete');
+
+    audioElement.play();
+
+    analyzer.getFloatFrequencyData(analyzer_data)
+    console.log(analyzer_data);
+
+    run();
+
+});
+
+
+//Should fail if access to mic is rejected
 navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(streamAnalysis);
 
 //Note: merely takes absolute value
