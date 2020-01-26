@@ -3,6 +3,7 @@ let ctx = canvas.getContext('2d');
 
 let active_visual = 0;
 let visuals = [
+    new SplashScreen(),
     new WaveVisual(),
     new DynamicWavesVisual(),
     new BarVisual(),
@@ -40,6 +41,9 @@ canvas.addEventListener('click', (event) => {
 function next_visual() {
     active_visual += 1;
     active_visual %= visuals.length;
+    if(active_visual == 0) {
+        active_visual++;
+    }
     call_visual_setup();
 }
 

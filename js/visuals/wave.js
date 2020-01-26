@@ -7,7 +7,6 @@ class WaveVisual {
             new WaveLayer(1, 1, theme.get_color(1/4), 0, 10)
         ];
 
-        console.log("1/4: "+theme.get_color(1/4)+"  2/4: "+theme.get_color(2/4)+"  3/4: "+theme.get_color(3/4));
 
     }
 
