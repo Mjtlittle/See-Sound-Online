@@ -16,16 +16,21 @@
     <script src="js/visuals/circle_bass.js"></script>
     <script src="js/visuals/circle_bass_colorscheme.js"></script>
     <script src="js/visuals/splash_screen.js"></script>
+    <script src="js/visuals/block_waves.js"></script>
     
 </head>
 <body>
+    
 
     <!-- load the logo for use by the splashscreen -->
     <!-- (hidden with css) -->
     <img id="logo" src="img/logo.png">
 
     <!-- accepting file input as stream source testing -->
-    <in><input id="input" type="file"></in>
+    <in>
+        <input id="input" type="file">
+        <button id="submit" type="button">Play</button>
+    </in>
 
     
     <!-- visualizer canvas and logic-->
@@ -39,6 +44,7 @@
     <script>
         function disableFileInput() {
             document.getElementById('input').remove();
+            document.getElementById('submit').remove();
         }
     </script>
 

@@ -14,6 +14,7 @@ let visuals = [
     new CircleBassVisual(),
     new CircleBassColorSchemeVisual(),
     new HistogramVisual(),
+    new BlockWavesVisual(),
 ];
 
 
@@ -25,6 +26,8 @@ function update_canvas_size() {
     canvas_ratio = canvas.width / canvas.height;
     call_visual_setup();
 }
+
+
 
 // change the visual on click
 canvas.addEventListener('click', (event) => {
@@ -59,6 +62,7 @@ function call_visual_setup(){
 
 // run the visualizer
 function run() {
+    console.log("run");
     update_canvas_size();
     call_visual_setup();
     window.requestAnimationFrame(__update_loop);
@@ -66,6 +70,7 @@ function run() {
 
 let prev_t;
 function __update_loop(t) {
+    console.log("update loop");
     window.requestAnimationFrame(__update_loop);
 
     if (analyzer != null)
@@ -109,5 +114,3 @@ function overlay_splash_screen() {
     ctx.textAlign = 'right';
     ctx.fillText('Click the Right Side to Switch visualizers. >', canvas.clientWidth-20,canvas.height*.7+50);
 }
-
-run();
