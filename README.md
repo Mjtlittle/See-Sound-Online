@@ -1,6 +1,6 @@
 # See Audio Online
 ## Web Based Microphone Audio Visualization
-### by: Ben Braun, Armondo Partida, and Joshua Little
+### by: Ben Braun, Armando Partida, and Joshua Little
 
 **Visit [seesound.online](https://mjtlittle.github.io/See-Sound-Online/) to play with it!**
 
