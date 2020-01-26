@@ -1,8 +1,13 @@
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-let visuals = [];
-let active_visual = null;
+let active_visual = 0;
+let visuals = [
+    new DynamicWavesVisual(),
+    new WaveVisual(),
+    new BarVisual(),
+    new CircleVisual(),
+];
 
 
 // auto resize canvas when then window changes size
@@ -12,9 +17,19 @@ function update_canvas_size() {
     canvas.height = window.innerHeight;
 }
 
-// set the current visual
-function set_visual(visual) {
-    active_visual = visual;
+// change the visual on click
+canvas.addEventListener('click', next_visual);
+
+// switch to the previous visual
+function next_visual() {
+    active_visual -= 1;
+    active_visual %= visuals.length;
+}
+
+// switch to the next visual
+function next_visual() {
+    active_visual += 1;
+    active_visual %= visuals.length;
 }
 
 // run the visualizer
@@ -31,9 +46,8 @@ function __update_loop(t) {
         analyzer.getFloatFrequencyData(analyzer_data);
 
     let dt = t - this.prev_t;
-    active_visual.draw(t, dt);
+    visuals[active_visual].draw(t, dt);
     this.prev_t = t;
 }
 
-set_visual(new BarVisual());
 run();
