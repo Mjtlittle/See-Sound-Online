@@ -17,7 +17,7 @@ class BarVisual {
             let x = i * bw;
             let h = canvas.height * (200 - value) /200;
             let y = canvas.height - h;
-            ctx.fillStyle = 'red';
+            ctx.fillStyle = 'rgb(' + (h/canvas.height)*255 + ',' + (1-h/canvas.height)*255 + ',50)';
             ctx.fillRect(x, y, bw, h);
         }
     }
