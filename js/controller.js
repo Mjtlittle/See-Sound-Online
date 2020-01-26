@@ -3,10 +3,11 @@ let ctx = canvas.getContext('2d');
 
 let active_visual = 0;
 let visuals = [
-    new WaveVisual(),
-    new DynamicWavesVisual(),
     new BarVisual(),
     new HistogramVisual(),
+    new WaveVisual(),
+
+    new DynamicWavesVisual(),
     new CircleVisual(),
     new CircleBassVisual(),
 ];
@@ -21,7 +22,19 @@ function update_canvas_size() {
 }
 
 // change the visual on click
-canvas.addEventListener('click', next_visual);
+canvas.addEventListener('click', (event) => {
+
+    // control visualizer
+    if (event.x > canvas.width/2){
+        next_visual();
+
+    // control theme
+    } else {
+        next_theme();
+        call_visual_setup();
+    }
+
+});
 
 // switch to the previous visual
 function next_visual() {
@@ -54,7 +67,7 @@ function __update_loop(t) {
 
     let dt = t - this.prev_t;
 
-    if (analyzer != null)
+    if (typeof analyzer !== 'undefined' && analyzer != null)
         visuals[active_visual].draw(t, dt);
         
     this.prev_t = t;

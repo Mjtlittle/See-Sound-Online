@@ -16,7 +16,6 @@ const streamAnalysis = function(stream) {
     analyzer_data = new Float32Array(analyzer.frequencyBinCount);
     analyzer.getFloatFrequencyData(analyzer_data);
     
-    
 }
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(streamAnalysis);
