@@ -7,7 +7,7 @@ let visuals = [
     new WaveVisual(),
     new DynamicWavesVisual(),
     new BarVisual(),
-    //new CircleVisual(),
+    new CircleVisual(),
     new CircleBassVisual(),
     new CircleBassColorSchemeVisual(),
     new HistogramVisual(),
