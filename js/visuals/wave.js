@@ -1,17 +1,17 @@
-class TemplateVisual {
-    constructor(){}
-    draw(t, dt) {}
-}
-
 class WaveVisual {
     constructor() {
-        this.wave_layers = [new WaveLayer(0.5, 2, 'red'), new WaveLayer(1, 1, 'blue', 0, 10)];
+        let theme = get_theme();
+        this.wave_layers = [
+            new WaveLayer(0.5, 2, theme.get_color(3/4), 0, 0),
+            new WaveLayer(0.5, 5, theme.get_color(2/4), 0, 5),
+            new WaveLayer(1, 1, theme.get_color(1/4), 0, 10)
+        ];
     }
 
     draw(t, dt) {
 
         // draw background
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = get_theme().get_last();
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // draw all layers
@@ -27,7 +27,7 @@ class WaveLayer {
         this.size_scale = size_scale;
         this.freq_scale = freq_scale;
 
-        this.base_size = 0.2; // percentage of the height of the webpage
+        this.base_size = 0.1; // percentage of the height of the webpage
 
         this.x_offset = x_offset;
         this.y_offset = y_offset;

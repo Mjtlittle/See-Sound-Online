@@ -5,8 +5,8 @@ let active_visual = 0;
 let visuals = [
     new BarVisual(),
     new HistogramVisual(),
-    
     new WaveVisual(),
+
     new DynamicWavesVisual(),
     new CircleVisual(),
     new CircleBassVisual(),
