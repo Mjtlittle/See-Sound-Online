@@ -1,20 +1,29 @@
 class DynamicWavesVisual {
     constructor() {
-        this.wave_layers = [new DynamicWaveLayer(2, 0.2, 'brown', 0, -50, 1000), new DynamicWaveLayer(1, 0.3, 'blue', 0, -10, 800), new DynamicWaveLayer(0.7, 0.6, 'green', 0, 10, 400), new DynamicWaveLayer(0.5, 0.8, 'purple', 0, 25, 200), new DynamicWaveLayer(0.3, 1.0, 'red', 0, 50, 100)];
+
+        let theme = get_theme();
+        this.wave_layers = 
+        [new DynamicWaveLayer(2, 0.2, theme.get_color(1/5), 0, -50, 1000),
+        new DynamicWaveLayer(1, 0.3, theme.get_color(2/5), 0, -10, 800),
+        new DynamicWaveLayer(0.7, 0.6, theme.get_color(3/5), 0, 10, 400),
+        new DynamicWaveLayer(0.5, 0.8, theme.get_color(4/5), 0, 25, 200),
+        new DynamicWaveLayer(0.3, 1.0, theme.get_color(5/5), 0, 50, 100)];
+
     }
 
     draw(t, dt) {
 
-        //console.log(analyzer_data);
+        let theme = get_theme();
 
         // draw background
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = theme.get_color(0);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-
         // draw all layers
+        let i = 1;
         this.wave_layers.forEach((layer) => {
-            layer.draw(t, dt);
+            layer.draw(t, dt, theme.get_color(i/5));
+            i++;
         })
     }
 }
@@ -35,7 +44,7 @@ class DynamicWaveLayer {
         this.speed = speed;
     }
 
-    draw(t, dt) {
+    draw(t, dt, color) {
 
         //Amplitude taken from highest value
         let amplitude = 0.0;
@@ -56,13 +65,13 @@ class DynamicWaveLayer {
         //console.log(wavelength);
 
         // draw the stats
-        ctx.font = '25px serif';
-        ctx.fillStyle = 'black';
-        ctx.fillText('Wavelength: '+wavelength, 20, 100);
-        ctx.fillText('Amplitude: '+amplitude, 20, 130);
+        // ctx.font = '25px serif';
+        // ctx.fillStyle = 'black';
+        // ctx.fillText('Wavelength: '+wavelength, 20, 100);
+        // ctx.fillText('Amplitude: '+amplitude, 20, 130);
 
         // draw wave
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = color;
         ctx.beginPath();
         ctx.moveTo(0, canvas.height);
 

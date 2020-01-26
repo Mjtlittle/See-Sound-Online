@@ -58,11 +58,11 @@ class Theme {
 let current_theme = 0;
 // follow the general rule that colors go from dark to light varient
 let themes = [
-    new Theme('Deep Ocean',['343633', '22495d', '2693bf', 'ffed68', 'ffffff']),
-    new Theme('Smoaky Fire',['253031', '336699', 'fb3640', 'ff9f1c', 'f2f4f3']),
-    new Theme('Rainbow', ['01295f','01295f', '2e86ab', '849324', 'ffb30f', 'fd151b','fd151b']),
-    new Theme('Clemson',['61007E', 'FF462E']),
-    new Theme('Grayscale',['000000', 'ffffff']),
+    new Theme('Deep Ocean',['343633', '22495d', '2693bf', 'ffed68', 'ffffff', 'def3f6']),
+    new Theme('Smoky Fire',['253031', '336699', 'fb3640', 'ff9f1c', 'f2f4f3','ffffff']),
+    new Theme('Rainbow', ['01295f','01295f', '2e86ab', '849324', 'ffb30f', 'fd151b']),
+    new Theme('Clemson',['f66733', '522d80','ffffff']),
+    new Theme('Grayscale',['000000','aaaaaa']),
 ]
 
 function next_theme(){
