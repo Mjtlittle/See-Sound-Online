@@ -17,3 +17,7 @@ html, body {
     top: 20;
     z-index: 999;
 }
+
+#logo {
+    display: none;
+}

@@ -7,9 +7,6 @@
 
     <link rel="stylesheet" href="css/index.css">
     
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
     <!-- Load all of the visuals -->
     <script src="js/visuals/bar.js"></script>
     <script src="js/visuals/circle.js"></script>
@@ -22,22 +19,27 @@
     
 </head>
 <body>
-    <in>
-        <input id="input" type="file">
-    </in>
 
+    <!-- load the logo for use by the splashscreen -->
+    <!-- (hidden with css) -->
+    <img id="logo" src="img/logo.png">
+
+    <!-- accepting file input as stream source testing -->
+    <in><input id="input" type="file"></in>
+
+    
+    <!-- visualizer canvas and logic-->
     <canvas id="canvas"></canvas>
     
     <script src="js/theme.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/audio.js"></script>
 
+    <!-- remove file chooser after the canvas has loaded-->
     <script>
-    
         function disableFileInput() {
             document.getElementById('input').remove();
         }
-
     </script>
 
 </body>
