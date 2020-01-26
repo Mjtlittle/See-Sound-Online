@@ -1,6 +1,6 @@
 class DynamicWavesVisual {
     constructor() {
-        this.wave_layers = [new DynamicWaveLayer(0.5, .9, 'red', 0, 0, 700), new DynamicWaveLayer(1, 1, 'blue', 0, 10, 400), new DynamicWaveLayer(1.1, 1.1, 'green', 0, 20, 100)];
+        this.wave_layers = [new DynamicWaveLayer(2, 0.2, 'brown', 0, -50, 1000), new DynamicWaveLayer(1, 0.3, 'blue', 0, -10, 800), new DynamicWaveLayer(0.7, 0.6, 'green', 0, 10, 400), new DynamicWaveLayer(0.5, 0.8, 'purple', 0, 25, 200), new DynamicWaveLayer(0.3, 1.0, 'red', 0, 50, 100)];
     }
 
     draw(t, dt) {
@@ -31,7 +31,7 @@ class DynamicWaveLayer {
         this.y_offset = y_offset;
         this.color = color;
 
-        this.detail = 100;
+        this.detail = 50;
         this.speed = speed;
     }
 
