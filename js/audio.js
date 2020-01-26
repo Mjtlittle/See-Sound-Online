@@ -1,6 +1,7 @@
 let analyzer = null;
 let analyzer_data;
 
+
 // get the analyzer and audio context
 const streamAnalysis = function(stream) {
 
@@ -24,14 +25,19 @@ const streamAnalysis = function(stream) {
 
 
 document.getElementById('submit').addEventListener('click', (event) => {
-    
-    var filename = document.getElementById('input').files[0].name;
+    //Restore after demo
+    //var filename = document.getElementById('input').files[0].name;
     var element = document.createElement("audio");
-    element.src = 'music/'+filename;
+    //Restore after demo
+    element.src = 'music/electric_feel.mp3'; //element.src = 'music/'+filename;
     element.type = 'audio/mpeg';
     document.body.append(element);
     
-    disableFileInput();
+    //Remove after demo
+    document.getElementById('submit').remove();
+
+    //Restore after demo
+    //disableFileInput();
 
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     
@@ -51,17 +57,17 @@ document.getElementById('submit').addEventListener('click', (event) => {
 
     analyzer.connect(context.destination);
 
-    console.log('complete');
 
     audioElement.play();
 
     analyzer.getFloatFrequencyData(analyzer_data)
-    console.log(analyzer_data);
 
     run();
 
 });
 
+//Remove after demo
+document.getElementById('input').remove();
 
 //Should fail if access to mic is rejected
 navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(streamAnalysis);
