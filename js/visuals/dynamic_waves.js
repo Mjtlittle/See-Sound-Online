@@ -11,6 +11,7 @@ class DynamicWavesVisual {
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+
         // draw all layers
         this.wave_layers.forEach((layer) => {
             layer.draw(t, dt);
@@ -36,7 +37,6 @@ class DynamicWaveLayer {
 
     draw(t, dt) {
 
-
         //Amplitude taken from highest value
         let amplitude = 0.0;
         let i = 0;
@@ -55,7 +55,11 @@ class DynamicWaveLayer {
         wavelength = wavelength / (i*50);
         console.log(wavelength);
 
-        document.getElementById("stats").innerHTML = "Wavelength: "+wavelength+"<br>Amplitude: "+amplitude;
+        // draw the stats
+        ctx.font = '25px serif';
+        ctx.fillStyle = 'black';
+        ctx.fillText('Wavelength: '+wavelength, 20, 100);
+        ctx.fillText('Amplitude: '+amplitude, 20, 130);
 
         // draw wave
         ctx.fillStyle = this.color;
