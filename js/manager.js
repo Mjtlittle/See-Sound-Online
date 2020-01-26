@@ -7,17 +7,16 @@ let analyzer_data;
 
 // get the analyzer and audio context
 const streamAnalysis = function(stream) {
-
-    const context = new (window.AudioContext || window.webkitAudioContext)();
-    //const processor = context.createScriptProcessor(1024, 1, 1);
     
+    const context = new (window.AudioContext || window.webkitAudioContext)();
+    const source = context.createMediaStreamSource(stream);
     analyzer = context.createAnalyser();
-    analyzer.connect(context.destination);
+    //analyzer.fft_size = 2048;
+    
+    source.connect(analyzer);
 
     analyzer_data = new Float32Array(analyzer.frequencyBinCount);
-
     analyzer.getFloatFrequencyData(analyzer_data);
-
 }
 navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(streamAnalysis);
 
@@ -41,7 +40,7 @@ function run() {
 let prev_t;
 function __update_loop(t) {
     window.requestAnimationFrame(__update_loop);
-    
+
     if (analyzer != null)
         analyzer.getFloatFrequencyData(analyzer_data);
 
