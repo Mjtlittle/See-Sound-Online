@@ -4,7 +4,6 @@ class CircleVisual {
         this.radius = 100;
         
         // RGB and Alpha color
-        this.backgroundColor = { red: 0, green: 0, blue: 0 };
         this.color = 'rgba(255, 255, 255, 255)';
         this.delay = 500;
         this.i = 0;
@@ -16,46 +15,28 @@ class CircleVisual {
 
     draw(t, dt) {
         // Background
-        ctx.fillStyle = `rgba(${this.backgroundColor.red}, ${this.backgroundColor.green}, ${this.backgroundColor.blue}, 255)`;
+        let theme = get_theme();
+        ctx.fillStyle = theme.get_color(2/4);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw circle
-        ctx.fillStyle = this.color;
+
+        // Draw outer circle
+        ctx.fillStyle = theme.get_color(3/4);
         ctx.beginPath();
+        let outerRadius = 15000 / Math.abs(getAverageBassFreq());
+        ctx.arc(ctx.canvas.width / 2, ctx.canvas.height / 2, outerRadius, 0, Math.PI * 2, false);
+        ctx.fill();
 
-        // RGB background
-        if(analyzer_data != null) {
-            
-            for(var i = 0; i < analyzer_data.length; i++) {
+        // Draw eye circles
+        ctx.fillStyle = theme.get_color(4/4);
+        ctx.beginPath();
+        let eyeRadius = 15000 / Math.abs(getAverageFreq());
+        ctx.arc((ctx.canvas.width / 2) - 50, (ctx.canvas.height / 2) - 80, eyeRadius / 10, 0, Math.PI * 2, false);
+        ctx.arc((ctx.canvas.width / 2) + 50, (ctx.canvas.height / 2) - 80, eyeRadius / 10, 0, Math.PI * 2, false);
+        ctx.fill();
 
-                if(this.i < this.delay) {
-                    this.i++;
-                    
-                    if(this.i == this.delay) {
-                        this.i = 0;
-
-                        if(this.backgroundColor.red < 255) {
-                            this.backgroundColor.red += this.colorOffset;
-                        }
-
-                        if(this.backgroundColor.green < 255 && this.backgroundColor.red == 255) {
-                            this.backgroundColor.green += this.colorOffset;
-                        }
-
-                        if(this.backgroundColor.blue < 255 && this.backgroundColor.green == 255) {
-                            this.backgroundColor.blue += this.colorOffset;
-                        }
-
-                        if(this.backgroundColor.red == 255 && this.backgroundColor.green == 255 && this.backgroundColor.blue == 255) {
-                            this.backgroundColor.red = 0;
-                            this.backgroundColor.green = 0;
-                            this.backgroundColor.blue = 0;
-                        }
-                    }
-                }
-            }
-        }
-
+        // Draw circle
+        ctx.fillStyle = theme.get_color(1/4);
+        ctx.beginPath();
         ctx.arc(ctx.canvas.width / 2, ctx.canvas.height / 2, this.radius, 0, getAverageFreq() / 20, false);
         ctx.fill();
     }
