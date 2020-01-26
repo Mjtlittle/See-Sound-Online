@@ -3,7 +3,7 @@ class TemplateVisual {
     draw(t, dt) {}
 }
 
-class Visual {
+class WaveVisual {
     constructor() {
         this.wave_layers = [new WaveLayer(0.5, 2, 'red'), new WaveLayer(1, 1, 'blue', 0, 10)];
     }

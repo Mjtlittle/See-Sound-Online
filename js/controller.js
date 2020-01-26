@@ -1,24 +1,9 @@
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
+
+let visuals = [];
 let active_visual = null;
 
-let analyzer = null;
-let analyzer_data;
-
-// get the analyzer and audio context
-const streamAnalysis = function(stream) {
-    
-    const context = new (window.AudioContext || window.webkitAudioContext)();
-    const source = context.createMediaStreamSource(stream);
-    analyzer = context.createAnalyser();
-    //analyzer.fft_size = 2048;
-    
-    source.connect(analyzer);
-
-    analyzer_data = new Float32Array(analyzer.frequencyBinCount);
-    analyzer.getFloatFrequencyData(analyzer_data);
-}
-navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(streamAnalysis);
 
 // auto resize canvas when then window changes size
 window.addEventListener('resize', update_canvas_size);
@@ -27,6 +12,7 @@ function update_canvas_size() {
     canvas.height = window.innerHeight;
 }
 
+// set the current visual
 function set_visual(visual) {
     active_visual = visual;
 }
@@ -49,5 +35,5 @@ function __update_loop(t) {
     this.prev_t = t;
 }
 
-set_visual(new Visual());
+set_visual(new BarVisual());
 run();
