@@ -1,11 +1,14 @@
+class TemplateVisual {
+    constructor(){}
+    draw(t, dt) {}
+}
+
 class Visual {
     constructor() {
         this.wave_layers = [new WaveLayer(0.5, 2, 'red'), new WaveLayer(1, 1, 'blue', 0, 10)];
     }
 
     draw(t, dt) {
-
-        console.log(analyzer_data);
 
         // draw background
         ctx.fillStyle = 'white';
