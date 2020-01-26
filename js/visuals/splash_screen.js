@@ -17,9 +17,11 @@ class SplashScreen {
         ctx.textAlign = 'center';
         ctx.fillText('Welcome to See Sound Online!',canvas.clientWidth/2,canvas.height/4);
         ctx.textAlign = 'left';
-        ctx.fillText('< Click the left side\nto switch color schemes.',20,canvas.height*.6);
+        ctx.fillText('< Click the left side\nto switch color schemes.',20,canvas.height*.55);
         ctx.textAlign = 'right';
-        ctx.fillText('Click the right side\nto switch visualizers. >', canvas.clientWidth-100,canvas.height*.8);
+        ctx.fillText('Click the right side\nto switch visualizers. >', canvas.clientWidth-100,canvas.height*.7);
+        ctx.textAlign = 'center';
+        ctx.fillText('Press \'m\' to upload an audio file.', canvas.clientWidth/2, canvas.height*0.9);
 
     }
 }
