@@ -11,6 +11,7 @@ let visuals = [
     new CircleBassVisual(),
     new CircleBassColorSchemeVisual(),
     new HistogramVisual(),
+    new BlockWavesVisual(),
 ];
 
 
