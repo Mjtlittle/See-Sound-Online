@@ -3,10 +3,10 @@ let ctx = canvas.getContext('2d');
 
 let active_visual = 0;
 let visuals = [
-    new HistogramVisual(),
-    new DynamicWavesVisual(),
     new WaveVisual(),
+    new DynamicWavesVisual(),
     new BarVisual(),
+    new HistogramVisual(),
     new CircleVisual(),
 ];
 
@@ -52,7 +52,10 @@ function __update_loop(t) {
         analyzer.getFloatFrequencyData(analyzer_data);
 
     let dt = t - this.prev_t;
-    visuals[active_visual].draw(t, dt);
+
+    if (analyzer != null)
+        visuals[active_visual].draw(t, dt);
+        
     this.prev_t = t;
 }
 
