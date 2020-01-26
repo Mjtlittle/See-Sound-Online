@@ -1,16 +1,14 @@
 
 class HistogramVisual {
     constructor(){
-
         this.cached_buffer = null
         this.cache_width = null;
         this.cache_height = null;
-
     }
 
     setup() {
         // background
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = get_theme().get_first();
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         if (this.cached_buffer != null && 
@@ -33,9 +31,9 @@ class HistogramVisual {
         // draw parts
         let bh = canvas.height / analyzer_data.length;
         for(let i = 0; i < analyzer_data.length; i++){
-            let value = (1 - (analyzer_data[i] * -1) / 100) * 255;
+            let value = 1 - Math.abs(analyzer_data[i]) / 100;
 
-            ctx.fillStyle = 'rgb(' + value + ',' + value + ',' + value + ')';
+            ctx.fillStyle = get_theme().get_color(value);
             ctx.fillRect(canvas.width-1, bh * i, 1,bh);
         }
     }
