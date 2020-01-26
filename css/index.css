@@ -12,5 +12,6 @@ html, body {
 }
 
 #stats {
+    color: black;
     position: absolute;
 }
