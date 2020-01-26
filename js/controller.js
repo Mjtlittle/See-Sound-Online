@@ -1,9 +1,12 @@
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
+let canvas_ratio;
+
+let splashscreen = true;
+let logo_image = document.getElementById('logo');
 
 let active_visual = 0;
 let visuals = [
-    new SplashScreen(),
     new WaveVisual(),
     new DynamicWavesVisual(),
     new BarVisual(),
@@ -20,6 +23,7 @@ window.addEventListener('resize', update_canvas_size);
 function update_canvas_size() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    canvas_ratio = canvas.width / canvas.height;
     call_visual_setup();
 }
 
@@ -44,10 +48,8 @@ canvas.addEventListener('click', (event) => {
 function next_visual() {
     active_visual += 1;
     active_visual %= visuals.length;
-    if(active_visual == 0) {
-        active_visual++;
-    }
     call_visual_setup();
+    splashscreen = false;
 }
 
 // calls the setup method on a visual if it exists
@@ -76,10 +78,39 @@ function __update_loop(t) {
 
     let dt = t - this.prev_t;
 
-    if (typeof analyzer !== 'undefined' && analyzer != null)
+    // if the analyzer exists
+    if (typeof analyzer !== 'undefined' && analyzer != null){
+        
         visuals[active_visual].draw(t, dt);
         
+        // overlay splashscreen on first visual
+        if (splashscreen)
+            overlay_splash_screen();
+    }
+    
     this.prev_t = t;
 }
 
+function overlay_splash_screen() {
 
+    ctx.fillStyle = 'rgb(0,0,0,0.5)'
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    let scale = canvas_ratio / 3
+    let img_w = logo_image.width * scale;
+    let img_h = logo_image.height * scale;
+    let img_x = canvas.width / 2 - img_w / 2;
+    let img_y = canvas.height / 2 - img_h - 60;
+    ctx.drawImage(logo_image, img_x, img_y, img_w, img_h);
+
+    ctx.font = 'bold 40px Arial';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.fillText('Welcome to See Sound Online!',canvas.clientWidth/2,canvas.height/2);
+
+    ctx.font = '35px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('< Click the Left Side to Switch color schemes.',20,canvas.height*.7);
+    ctx.textAlign = 'right';
+    ctx.fillText('Click the Right Side to Switch visualizers. >', canvas.clientWidth-20,canvas.height*.7+50);
+}

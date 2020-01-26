@@ -18,6 +18,10 @@ html, body {
     z-index: 999;
 }
 
+#logo {
+    display: none;
+}
+
 #submit {
     position: absolute;
     left: 50;
