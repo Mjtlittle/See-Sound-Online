@@ -62,7 +62,6 @@ function call_visual_setup(){
 
 // run the visualizer
 function run() {
-    console.log("run");
     update_canvas_size();
     call_visual_setup();
     window.requestAnimationFrame(__update_loop);
@@ -70,7 +69,6 @@ function run() {
 
 let prev_t;
 function __update_loop(t) {
-    console.log("update loop");
     window.requestAnimationFrame(__update_loop);
 
     if (analyzer != null)

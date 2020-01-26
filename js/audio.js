@@ -5,10 +5,13 @@ let analyzer_data;
 // get the analyzer and audio context
 const streamAnalysis = function(stream) {
 
+console.log('stream');
+
     const context = new (window.AudioContext || window.webkitAudioContext)();
     const source = context.createMediaStreamSource(stream);
     
-    disableFileInput();
+    //disableFileInput();
+    document.getElementById('submit').remove();
 
     analyzer = context.createAnalyser();
     analyzer.minDecibels = -100;
