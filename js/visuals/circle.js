@@ -1,4 +1,4 @@
-class CircleBeat {
+class CircleVisual {
     constructor() {
         this.x, this.y = 0;
         this.radius = 100;
