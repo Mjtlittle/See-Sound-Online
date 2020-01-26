@@ -3,13 +3,13 @@ let ctx = canvas.getContext('2d');
 
 let active_visual = 0;
 let visuals = [
-    new BarVisual(),
-    new HistogramVisual(),
     new WaveVisual(),
-
     new DynamicWavesVisual(),
-    new CircleVisual(),
+    new BarVisual(),
+    //new CircleVisual(),
     new CircleBassVisual(),
+    new CircleBassColorSchemeVisual(),
+    new HistogramVisual(),
 ];
 
 

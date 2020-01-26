@@ -6,6 +6,9 @@ class WaveVisual {
             new WaveLayer(0.5, 5, theme.get_color(2/4), 0, 5),
             new WaveLayer(1, 1, theme.get_color(1/4), 0, 10)
         ];
+
+        console.log("1/4: "+theme.get_color(1/4)+"  2/4: "+theme.get_color(2/4)+"  3/4: "+theme.get_color(3/4));
+
     }
 
     draw(t, dt) {
@@ -15,8 +18,10 @@ class WaveVisual {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // draw all layers
+        let i = 0;
         this.wave_layers.forEach((layer) => {
-            layer.draw(t, dt);
+            layer.draw(t, dt, get_theme().get_color(i/4));
+            i++;
         })
     }
 }
@@ -36,10 +41,10 @@ class WaveLayer {
         this.detail = 100;
     }
 
-    draw(t, dt) {
+    draw(t, dt, color) {
 
         // draw wave
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = color;
         ctx.beginPath();
         ctx.moveTo(0, canvas.height);
 
