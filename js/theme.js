@@ -6,7 +6,7 @@ class Theme {
         // convert colors to hex
         this.colors = colors.map(hexToList);
         this.num_colors = this.colors.length;
-        
+
     }
 
     // pass a value between 0 and 1 to get the color within the gradient
@@ -14,7 +14,7 @@ class Theme {
 
         // if there is only one color in the theme
         if (this.num_colors == 1)
-            return this.colors[0];  
+            return this.colors[0];
 
         // if the p is at the ends just return the color
         if (p >= 1.0)

@@ -96,21 +96,21 @@ function overlay_splash_screen() {
     ctx.fillStyle = 'rgb(0,0,0,0.5)'
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    let scale = canvas_ratio / 3
+    let scale = canvas_ratio / 4;
+
     let img_w = logo_image.width * scale;
     let img_h = logo_image.height * scale;
     let img_x = canvas.width / 2 - img_w / 2;
     let img_y = canvas.height / 2 - img_h - 60;
+
     ctx.drawImage(logo_image, img_x, img_y, img_w, img_h);
 
     ctx.font = 'bold 40px Arial';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('Welcome to See Sound Online!',canvas.clientWidth/2,canvas.height/2);
+    ctx.fillText('Welcome to See Sound Online!', canvas.width/2, canvas.height/2);
 
     ctx.font = '35px Arial';
-    ctx.textAlign = 'left';
-    ctx.fillText('< Click the Left Side to Switch color schemes.',20,canvas.height*.7);
-    ctx.textAlign = 'right';
-    ctx.fillText('Click the Right Side to Switch visualizers. >', canvas.clientWidth-20,canvas.height*.7+50);
+    ctx.fillText('Click on the right side of the screen to change the visual', canvas.width/2, canvas.height/2+60);
+    ctx.fillText('and click to the left side to change the theme.', canvas.width/2, canvas.height/2+100);
 }
