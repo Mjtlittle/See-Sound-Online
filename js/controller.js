@@ -8,6 +8,7 @@ let visuals = [
     new WaveVisual(),
     new BarVisual(),
     new CircleVisual(),
+    new CircleBassVisual(),
 ];
 
 
