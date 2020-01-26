@@ -5,6 +5,8 @@ class Visual {
 
     draw(t, dt) {
 
+        console.log(analyzer_data);
+
         // draw background
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
