@@ -1,6 +1,6 @@
 class DynamicWavesVisual {
     constructor() {
-        this.wave_layers = [new DynamicWaveLayer(0.5, 2, 'red'), new DynamicWaveLayer(1, 1, 'blue', 0, 10)];
+        this.wave_layers = [new DynamicWaveLayer(0.5, .9, 'red', 0, 0, 700), new DynamicWaveLayer(1, 1, 'blue', 0, 10, 400), new DynamicWaveLayer(1.1, 1.1, 'green', 0, 20, 100)];
     }
 
     draw(t, dt) {
@@ -19,7 +19,7 @@ class DynamicWavesVisual {
 }
 
 class DynamicWaveLayer {
-    constructor(size_scale=1, freq_scale=1, color='red', x_offset=0, y_offset=0) {
+    constructor(size_scale=1, freq_scale=1, color='red', x_offset=0, y_offset=0, speed=200) {
 
         this.size_scale = size_scale;
         this.freq_scale = freq_scale;
@@ -31,27 +31,31 @@ class DynamicWaveLayer {
         this.color = color;
 
         this.detail = 100;
+        this.speed = speed;
     }
 
     draw(t, dt) {
+
 
         //Amplitude taken from highest value
         let amplitude = 0.0;
         let i = 0;
         for (i=0; i<analyzer_data.length; i++) {
-            if (analyzer_data[i] > amplitude) {
-                amplitude = analyzer_data[i];
+            if ((analyzer_data[i] + 200) > amplitude) {
+                amplitude = analyzer_data[i] + 200;
             }
         }
-        amplitude = amplitude / 50.0;
+        amplitude = amplitude / 100.0;
         console.log(amplitude);
         //Wavelength taken from average value
         let wavelength = 0.0;
         for (i=0; i<analyzer_data.length; i++) {
             wavelength += analyzer_data[i];
         }
-        wavelength = wavelength / (i*50.0);
+        wavelength = wavelength / (i*50);
         console.log(wavelength);
+
+        document.getElementById("stats").innerHTML = "Wavelength: "+wavelength+"<br>Amplitude: "+amplitude;
 
         // draw wave
         ctx.fillStyle = this.color;
@@ -64,7 +68,7 @@ class DynamicWaveLayer {
             
             let ft = i / this.detail * Math.PI * 2 * this.freq_scale;
 
-            let dft = (t / 1000) + this.x_offset;
+            let dft = (t / this.speed) + this.x_offset;
 
             let A = canvas.height * (this.base_size * this.size_scale);
             
