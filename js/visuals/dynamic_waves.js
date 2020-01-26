@@ -5,7 +5,7 @@ class DynamicWavesVisual {
 
     draw(t, dt) {
 
-        console.log(analyzer_data);
+        //console.log(analyzer_data);
 
         // draw background
         ctx.fillStyle = 'white';
@@ -46,14 +46,14 @@ class DynamicWaveLayer {
             }
         }
         amplitude = amplitude / 100.0;
-        console.log(amplitude);
+        //console.log(amplitude);
         //Wavelength taken from average value
         let wavelength = 0.0;
         for (i=0; i<analyzer_data.length; i++) {
             wavelength += analyzer_data[i];
         }
         wavelength = wavelength / (i*50);
-        console.log(wavelength);
+        //console.log(wavelength);
 
         // draw the stats
         ctx.font = '25px serif';
