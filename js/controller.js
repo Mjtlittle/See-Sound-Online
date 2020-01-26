@@ -9,6 +9,7 @@ let visuals = [
     new WaveVisual(),
     new DynamicWavesVisual(),
     new CircleVisual(),
+    new CircleBassVisual(),
 ];
 
 

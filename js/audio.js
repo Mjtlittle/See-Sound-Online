@@ -74,3 +74,12 @@ function getAverageFreq() {
     }
     return sum / analyzer_data.length;
 }
+
+function getAverageBassFreq() {
+    let analyzer_data = getBassFreq();
+    sum = 0.0;
+    for(let i=0; i<analyzer_data.length; i++) {
+        sum += analyzer_data[i];
+    }
+    return sum / analyzer_data.length;
+}
