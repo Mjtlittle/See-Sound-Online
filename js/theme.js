@@ -1,10 +1,12 @@
 class Theme {
     constructor(name, colors) {
 
+        this.name = name;
+
         // convert colors to hex
         this.colors = colors.map(hexToList);
         this.num_colors = this.colors.length;
-
+        
     }
 
     // pass a value between 0 and 1 to get the color within the gradient
