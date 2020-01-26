@@ -7,6 +7,8 @@ const streamAnalysis = function(stream) {
     const context = new (window.AudioContext || window.webkitAudioContext)();
     const source = context.createMediaStreamSource(stream);
     
+    disableFileInput();
+
     analyzer = context.createAnalyser();
     analyzer.minDecibels = -100;
     analyzer.maxDecibels = 0;

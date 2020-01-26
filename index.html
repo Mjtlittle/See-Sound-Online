@@ -22,7 +22,10 @@
     
 </head>
 <body>
-    
+    <in>
+        <input id="input" type="file">
+    </in>
+
     <canvas id="canvas"></canvas>
     
     <script src="js/theme.js"></script>
@@ -30,20 +33,10 @@
     <script src="js/audio.js"></script>
 
     <script>
-    //Sorry, this seemed like the easiest way lol
-    document.onkeyup = function(e) {
-        if (e.which == 77) { // 'm'
-            var selectDialogueLink = $('<a href="">Select files</a>');
-            var fileSelector = $('<input type="file">');
-
-            selectDialogueLink.click(function(){
-                fileSelector.click();
-                return false;
-            });
-
-            $('body').html(selectDialogueLink);
+    
+        function disableFileInput() {
+            document.getElementById('input').remove();
         }
-    };
 
     </script>
 
