@@ -67,9 +67,16 @@ let themes = [
     new Theme('Grayscale',['000000','aaaaaa']),
 ]
 
-function next_theme(){
+function next_theme() {
     current_theme += 1;
     current_theme %= themes.length;
+}
+
+function prev_theme() {
+    if (current_theme === 0) {
+        current_theme = themes.length;
+    }
+    current_theme -= 1;
 }
 
 function get_theme(){

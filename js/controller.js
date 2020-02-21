@@ -29,24 +29,54 @@ function update_canvas_size() {
 
 
 
-// change the visual on click
-canvas.addEventListener('click', (event) => {
+// // change the visual on click
+// canvas.addEventListener('click', (event) => {
 
-    // control visualizer
-    if (event.x > canvas.width/2){
-        next_visual();
+//     // control visualizer
+//     if (event.x > canvas.width/2){
+//         next_visual();
 
-    // control theme
-    } else {
-        next_theme();
-        call_visual_setup();
+//     // control theme
+//     } else {
+//         next_theme();
+//         call_visual_setup();
+//     }
+
+// });
+
+// listen for key press
+window.addEventListener('keydown', (event) => {
+
+    switch(event.which) {
+        case 37: //left arrow
+            prev_visual();
+            break;
+        case 38: //down arrow
+            next_theme();
+            break;
+        case 39: //right arrow
+            next_visual();
+            break;
+        case 40: //up arrow
+            prev_theme();
+            break;
+        default:
+            //pass
     }
 
 });
 
-// switch to the previous visual
+// switch to the next visual
 function next_visual() {
     active_visual += 1;
+    active_visual %= visuals.length;
+    call_visual_setup();
+    splashscreen = false;
+}
+
+// switch to previous visual
+function prev_visual() {
+    active_visual -= 1;
     active_visual %= visuals.length;
     call_visual_setup();
     splashscreen = false;
