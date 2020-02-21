@@ -4,4 +4,4 @@
 
 **Visit [seesound.online](https://mjtlittle.github.io/See-Sound-Online/) to play with it!**
 
-This project was made during the 2020 CUHackit at Clemson in the span of 24 hours. You can tap on the right half of the screen to switch between the different audio visualizers and the left half to switch the color scheme.
+This project was made during the 2020 CUHackit at Clemson in the span of 24 hours. You can use left/right arrow keys to switch the visualizer and up/down arrow keys to switch color scheme.
