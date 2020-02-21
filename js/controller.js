@@ -76,8 +76,10 @@ function next_visual() {
 
 // switch to previous visual
 function prev_visual() {
+    if (active_visual === 0) {
+        active_visual = visuals.length;
+    }
     active_visual -= 1;
-    active_visual %= visuals.length;
     call_visual_setup();
     splashscreen = false;
 }
