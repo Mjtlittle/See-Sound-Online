@@ -12,7 +12,7 @@ class WaveVisual {
     draw(t, dt) {
 
         // draw background
-        ctx.fillStyle = get_theme().get_last();
+        ctx.fillStyle = get_scheme().get_last();
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // draw all layers
@@ -20,7 +20,7 @@ class WaveVisual {
         let freq_mod = getAverageBassFreq()/500;
         this.wave_layers.forEach((layer) => {
             layer.size = freq_mod;
-            layer.draw(t, dt, get_theme().get_color(i/4));
+            layer.draw(t, dt, get_scheme().get_color(i/4));
             i++;
         })
     }

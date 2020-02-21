@@ -6,7 +6,7 @@ class GradientVisual {
         let segments = 100;
         let cw = canvas.width / segments;
         for(let i = 0; i < segments; i++){
-            ctx.fillStyle = get_theme().get_color(i/segments);
+            ctx.fillStyle = get_scheme().get_color(i/segments);
             ctx.fillRect(i * cw, 0, cw, canvas.height);
         }
     }

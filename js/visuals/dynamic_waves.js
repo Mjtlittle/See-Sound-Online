@@ -1,7 +1,7 @@
 class DynamicWavesVisual {
     constructor() {
 
-        let theme = get_theme();
+        let theme = get_scheme();
         this.wave_layers = 
         [new DynamicWaveLayer(2, 0.2, theme.get_color(1/5), 0, -50, 1000),
         new DynamicWaveLayer(1, 0.3, theme.get_color(2/5), 0, -10, 800),
@@ -13,7 +13,7 @@ class DynamicWavesVisual {
 
     draw(t, dt) {
 
-        let theme = get_theme();
+        let theme = get_scheme();
 
         // draw background
         ctx.fillStyle = theme.get_color(0);

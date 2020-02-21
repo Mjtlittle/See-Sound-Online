@@ -10,7 +10,7 @@ class CircleBassColorSchemeVisual {
 
     draw(t, dt) {
 
-        let theme = get_theme();
+        let theme = get_scheme();
         this.color = theme.get_color(1/4);
         //Background
         ctx.fillStyle = theme.get_color(2/4);

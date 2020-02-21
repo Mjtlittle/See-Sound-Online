@@ -4,7 +4,7 @@ class BarVisual {
     draw(t, dt) {
 
         // draw background
-        ctx.fillStyle = get_theme().get_first();
+        ctx.fillStyle = get_scheme().get_first();
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         // draw bars
@@ -17,7 +17,7 @@ class BarVisual {
             let x = i * bw;
             let h = canvas.height * (200 - value) / 200;
             let y = canvas.height - h;
-            ctx.fillStyle = get_theme().get_color(h/canvas.height);
+            ctx.fillStyle = get_scheme().get_color(h/canvas.height);
             ctx.fillRect(x, y, bw, h);
         }
     }

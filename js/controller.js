@@ -52,13 +52,13 @@ window.addEventListener('keydown', (event) => {
             prev_visual();
             break;
         case 38: //down arrow
-            next_theme();
+            next_scheme();
             break;
         case 39: //right arrow
             next_visual();
             break;
         case 40: //up arrow
-            prev_theme();
+            prev_scheme();
             break;
         default:
             //pass
@@ -140,5 +140,5 @@ function overlay_splash_screen() {
 
     ctx.font = '35px Arial';
     ctx.fillText('Click on the right side of the screen to change the visual', canvas.width/2, canvas.height/2+60);
-    ctx.fillText('and click to the left side to change the theme.', canvas.width/2, canvas.height/2+100);
+    ctx.fillText('and click to the left side to change the scheme.', canvas.width/2, canvas.height/2+100);
 }

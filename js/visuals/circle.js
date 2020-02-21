@@ -15,7 +15,7 @@ class CircleVisual {
 
     draw(t, dt) {
         // Background
-        let theme = get_theme();
+        let theme = get_scheme();
         ctx.fillStyle = theme.get_color(2/4);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 

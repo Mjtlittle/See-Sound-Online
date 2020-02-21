@@ -8,7 +8,7 @@ class HistogramVisual {
 
     setup() {
         // background
-        ctx.fillStyle = get_theme().get_first();
+        ctx.fillStyle = get_scheme().get_first();
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         if (this.cached_buffer != null && 
@@ -33,7 +33,7 @@ class HistogramVisual {
         for(let i = 0; i < analyzer_data.length; i++){
             let value = 1 - Math.abs(analyzer_data[i]) / 100;
 
-            ctx.fillStyle = get_theme().get_color(value);
+            ctx.fillStyle = get_scheme().get_color(value);
             ctx.fillRect(canvas.width-1, bh * i, 1,bh);
         }
     }
