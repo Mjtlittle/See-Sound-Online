@@ -139,6 +139,6 @@ function overlay_splash_screen() {
     ctx.fillText('Welcome to See Sound Online!', canvas.width/2, canvas.height/2);
 
     ctx.font = '35px Arial';
-    ctx.fillText('Click on the right side of the screen to change the visual', canvas.width/2, canvas.height/2+60);
-    ctx.fillText('and click to the left side to change the scheme.', canvas.width/2, canvas.height/2+100);
+    ctx.fillText('Use the left/right arrow keys to change the visuals', canvas.width/2, canvas.height/2+60);
+    ctx.fillText('and the up/down arrow keys to change the color scheme.', canvas.width/2, canvas.height/2+100);
 }
